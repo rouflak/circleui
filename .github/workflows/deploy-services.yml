@@ -1,0 +1,21 @@
+name: Test checkout sha
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        required: true
+        description: "Tag"
+        type: string
+
+jobs:
+  checkout-print:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag }}
+
+      - name: Print
+        run: |
+          echo ${{ github.sha }}
