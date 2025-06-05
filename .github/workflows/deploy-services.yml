@@ -16,6 +16,6 @@ jobs:
         with:
           ref: ${{ inputs.tag }}
 
-      - name: Print
+      - name: Print sha
         run: |
           echo ${{ github.sha }}
