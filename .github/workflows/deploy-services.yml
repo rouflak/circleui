@@ -18,4 +18,5 @@ jobs:
 
       - name: Print sha
         run: |
+          echo ${{ github.ref }}
           echo ${{ github.sha }}
