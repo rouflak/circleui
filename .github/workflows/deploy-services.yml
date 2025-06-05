@@ -16,6 +16,10 @@ jobs:
         with:
           ref: ${{ inputs.tag }}
 
+      - name: Checkout
+        run: |
+          git checkout ${{ inputs.tag }}
+
       - name: Print sha
         run: |
           echo ${{ github.ref }}
