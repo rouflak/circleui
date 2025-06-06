@@ -22,4 +22,4 @@ jobs:
     steps:
       - name: Print sha
         run: |
-          echo ${{ GITHUB_SHA }}
+          echo $GITHUB_SHA
