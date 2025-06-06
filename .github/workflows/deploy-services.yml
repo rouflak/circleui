@@ -9,18 +9,17 @@ on:
         type: string
 
 jobs:
+  register-sha:
+    runs-on: ubuntu-latest
+    steps:
+      - name: save sha
+        run: |
+          git checkout ${{ inputs.tag }}
+          echo "GITHUB_SHA=${{ github.sha }}" >> $GITHUB_OUTPUT
+
   checkout-print:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: ${{ inputs.tag }}
-
-      - name: Checkout
-        run: |
-          git checkout ${{ inputs.tag }}
-
       - name: Print sha
         run: |
-          echo ${{ github.ref }}
-          echo ${{ github.sha }}
+          echo ${{ GITHUB_SHA }}
