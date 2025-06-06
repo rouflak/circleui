@@ -11,8 +11,11 @@ on:
 jobs:
   register-sha:
     runs-on: ubuntu-latest
+    outputs:
+      github_sha: ${{ steps.save-sha.outputs.GITHUB_SHA}}
     steps:
       - name: save sha
+        id: save-sha
         run: |
           git checkout ${{ inputs.tag }}
           echo "GITHUB_SHA=${{ github.sha }}" >> $GITHUB_OUTPUT
@@ -21,5 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print sha
+        env:
+          GITHUB_SHA: ${{ needs.register-sha.outputs.github_sha }}
         run: |
           echo $GITHUB_SHA
