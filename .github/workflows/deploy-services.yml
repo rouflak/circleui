@@ -14,6 +14,7 @@ jobs:
     outputs:
       github_sha: ${{ steps.save-sha.outputs.GITHUB_SHA}}
     steps:
+      - uses: actions/checkout@v4
       - name: save sha
         id: save-sha
         run: |
@@ -23,6 +24,7 @@ jobs:
   checkout-print:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - name: Print sha
         env:
           GITHUB_SHA: ${{ needs.register-sha.outputs.github_sha }}
