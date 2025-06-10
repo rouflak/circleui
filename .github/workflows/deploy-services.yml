@@ -15,7 +15,8 @@ jobs:
       github_sha: ${{ steps.save-sha.outputs.GITHUB_SHA}}
     steps:
       - uses: actions/checkout@v4
-      - uses: ./.github/actions/sha-from-tag
+      - name: Save Sha
+        uses: ./.github/actions/sha-from-tag
         id: save-sha
         with:
           tag: ${{ github.event.inputs.tag }}
