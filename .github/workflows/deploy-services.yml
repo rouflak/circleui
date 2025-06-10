@@ -16,9 +16,10 @@ jobs:
       - name: Save Sha
         uses: ./.github/actions/sha-from-tag
         id: save-sha
+        if: ${{ inputs.tag }}
         with:
           tag: ${{ github.event.inputs.tag }}
       - name: Print sha
         shell: bash
         run: |
-          echo ${{ steps.save-sha.outputs.sha }}
+          echo ${{ steps.save-sha.outputs.sha || 'test' }}
