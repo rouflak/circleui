@@ -14,19 +14,13 @@ jobs:
     outputs:
       github_sha: ${{ steps.save-sha.outputs.GITHUB_SHA}}
     steps:
-      - uses: actions/checkout@v4
-      - name: save sha
+      - uses: .github/actions/sha-from-tag
         id: save-sha
-        run: |
-          git checkout ${{ inputs.tag }}
-          echo "GITHUB_SHA=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
-
-  checkout-print:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+        with:
+          tag: ${{ github.event.inputs.tag }}
       - name: Print sha
+        shell: bash
         env:
-          GITHUB_SHA: ${{ needs.register-sha.outputs.github_sha }}
+          GITHUB_SHA: ${{ steps.save-sha.outputs.github_sha }}
         run: |
           echo $GITHUB_SHA

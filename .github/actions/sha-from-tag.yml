@@ -1,0 +1,16 @@
+name: "Get the sha of a tag"
+description: "Get the sha of a tag"
+outputs:
+  github_sha:
+    description: "The sha of the tag"
+inputs:
+  tag:
+    description: "The tag"
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Get the sha of the tag
+      id: sha
+      run: |
+        echo "::set-output name=github_sha::$(git ls-remote https://github.com/${{ github.repository }}.git ${{ inputs.tag }} | cut -f1)"
