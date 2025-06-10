@@ -12,7 +12,7 @@ jobs:
   register-sha:
     runs-on: ubuntu-latest
     outputs:
-      github_sha: ${{ steps.save-sha.outputs.GITHUB_SHA}}
+      githubsha: ${{ steps.save-sha.outputs.GITHUBSHA}}
     steps:
       - uses: actions/checkout@v4
       - name: Save Sha
@@ -23,6 +23,6 @@ jobs:
       - name: Print sha
         shell: bash
         env:
-          GITHUB_SHA: ${{ steps.save-sha.outputs.github_sha }}
+          GITHUBSHA: ${{ steps.save-sha.outputs.githubsha }}
         run: |
-          echo $GITHUB_SHA
+          echo $GITHUBSHA

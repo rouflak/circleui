@@ -1,7 +1,7 @@
 name: "Get the sha of a tag"
 description: "Get the sha of a tag"
 outputs:
-  github_sha:
+  githubsha:
     description: "The sha of the tag"
     value: ${{ steps.get-sha.outputs.sha }}
 inputs:
