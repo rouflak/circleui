@@ -21,4 +21,4 @@ jobs:
       - name: Print sha
         shell: bash
         run: |
-          echo ${{ steps.save-sha.outputs.githubsha }}
+          echo ${{ steps.save-sha.outputs.sha }}
