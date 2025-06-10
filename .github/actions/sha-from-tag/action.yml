@@ -3,7 +3,7 @@ description: "Get the sha of a tag"
 outputs:
   githubsha:
     description: "The sha of the tag"
-    value: ${{ steps.get-sha.outputs.sha }}
+    value: ${{ steps.sha.outputs.githubsha }}
 inputs:
   tag:
     description: "The tag"
@@ -17,5 +17,4 @@ runs:
       run: |
         git fetch --tags
         git checkout ${{ inputs.tag }}
-        echo "sha is $(git rev-parse HEAD)"
         echo "githubsha=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
