@@ -15,4 +15,5 @@ runs:
       shell: bash
       id: sha
       run: |
-        echo "::set-output name=github_sha::$(git ls-remote https://github.com/${{ github.repository }}.git ${{ inputs.tag }} | cut -f1)"
+        git checkout ${{ inputs.tag }}
+        echo "::set-output name=sha::$(git rev-parse HEAD)"
