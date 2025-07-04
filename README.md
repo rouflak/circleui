@@ -5,3 +5,5 @@ Adding some lines here
 To test something
 
 And some new line
+
+New things happens
