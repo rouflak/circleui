@@ -4,6 +4,6 @@ Adding some lines here
 
 To test something
 
-And some new lines
+And some new line
 
 New things happens
